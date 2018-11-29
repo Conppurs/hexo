@@ -83,3 +83,35 @@ deploy:
     github: https://github.com/wpstan/wpstan.github.io.git
     coding: https://git.dev.tencent.com/wpstan/pages.git
   branch: master
+
+# 外部链接优化
+nofollow:
+    enable: true
+    exclude:     # 例外的链接，可将友情链接放置此处
+    - 'yousite'
+
+html_minifier:
+  enable: true
+  ignore_error: false
+  exclude:
+
+css_minifier:
+  enable: true
+  exclude:
+    - '*.min.css'
+
+js_minifier:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '*.min.js'
+
+image_minifier:
+  enable: true
+  interlaced: false
+  multipass: false
+  optimizationLevel: 2
+  pngquant: false
+  progressive: false

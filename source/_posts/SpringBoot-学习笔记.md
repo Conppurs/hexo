@@ -16,7 +16,7 @@ Spring是容器，是管理对象生命周期的容器。开发的时候，由Sp
 SpringBoot自带了java web服务器，引入SpringBoot后，在main方法中注册Application启动类，即可运行。页面输出HelloWorld，需要配置一个@Controller，用来响应浏览器请求。
 ### 控制器
 @Controller 用来处理http的请求，@RestController用来返回Json数据格式，@RequestMapping用来配置Url映射。可以使用GetMapping来简化Get操作。
-{%codeblock Controller%}
+{%codeblock Controller  lang:java %}
 public class HelloController {
     @RequestMapping(value = "/hello",method = RequestMethod.GET)//等价于@GetMapping(value="/hello")
     @ResponseBody
@@ -25,7 +25,7 @@ public class HelloController {
     }
 }{%endcodeblock%}<!-- more-->
 当注解写成@RestController的时候，可以直接返回一个序列化的JSON对象。下面的代码将返回一个JSON格式的CMB对象。
-{%codeblock RestController%}
+{%codeblock RestController  lang:java %}
 @RestController
 @RequestMapping("/config")
 public class ConfigController {   
@@ -37,14 +37,14 @@ public class ConfigController {
 Controller可以返回字符串，可以返回序JSON列化后的对象，那要怎么返回HTML页面呢？可以使用前端页面模板。
 ### thymeleaf
 首先在配置文件中引入thymeleaf的包，然后再Controller中编写响应请求代码，返回html的页面名字。其中，ModelMap是用来与Html页面进行数据交互的。
-{%codeblock Controller%}
+{%codeblock Controller  lang:java %}
 @RequestMapping(method = RequestMethod.GET)
 public String getBookList(ModelMap map) {
     map.addAttribute("bookList",bookService.findAll());
     return "bookList";
 }{%endcodeblock%}
 bookList.html的页面部分内容如下所示：
-{%codeblock bookList.html%}
+{%codeblock bookList.html  lang:html %}
 <tr th:each="book : ${bookList}">
   <th scope="row" th:text="${book.id}"></th>
   <td><a th:href="@{/book/update/{bookId}(bookId=${book.id})}" th:text="${book.name}"></a></td>
@@ -59,7 +59,7 @@ SpringBoot可以方便的连接多种数据库，比如MySql，ElasticSearch等�
 * JPA、spring-data-jpa、hibernate三者之间的关系，JPA是Java Persistence API缩写，是JAVA持久化规范，spring-data-jpa对具体的JPA实现做了封装，默认采用hibernate实现，能够方便大家在不同的ORM框架之间进行切换而不需要更改代码。
 
 操作步骤：1、引入spring-data-jpa；2、编写Entity类；3、编写Repository类；4、调用方法
-{%codeblock Book.java%}
+{%codeblock Book.java  lang:java %}
 @Entity
 public class Book implements Serializable {
     @Id
@@ -70,14 +70,14 @@ public class Book implements Serializable {
    ....get set
    ....
 {%endcodeblock%}
-{%codeblock BookRepository.java%}
+{%codeblock BookRepository.java  lang:java %}
 /**
  * Book 数据持久层操作接口
  */
 public interface BookRepository extends JpaRepository<Book, Long> {
 }
 {%endcodeblock%}
-{%codeblock BookServiceImpl.java%}
+{%codeblock BookServiceImpl.java lang:java %}
 /**
  * Book 业务层实现
  */
