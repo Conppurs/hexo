@@ -6,11 +6,11 @@ tags: ['hexo','seo']
 categories: 博客
 keywords: next,搜索引擎优化
 ---
-# 前言
+### 前言
 我在大学期间使用过ZBlog、WordPress等博客系统。而Hexo与这两者的区别在于，Hexo是静态博客系统。Hexo无需数据库作为存储，也无需服务器端渲染，直接将页面以Html的格式输出给用户。全球最大男性交友社区github提供了GitPage解决方案，使得开发者可以直接将静态Html页面发布到web上。这样也避免了购买web云服务器，却只用来处理静态页面的不划算，免费的总是最好的。
-# GitPage
+### GitPage
 我们可以将Hexo生成的页面push到GitPage中来发布，GitPage是Github提供的个人页面的个性化展示空间。可以通过创建一个Repository，进入设置页面激活GitPage，而后可以通过 (*用户名.github.io*) 的方式访问。[wpstan.github.io](https://www.tanrd.com)。GitPage非常友好的提供了域名映射，我们可以使用自己简短的域名来访问博客，例如本站的域名[tanRD.com](https://www.tanrd.com)。
-# SEO 之 keywords
+### SEO 之 keywords
 搜索引擎会在页面的<head\>标签中查询<keywords\>的mete定义，收录时会根据keywords进行索引，因此这个很有必要进行优化。打开_config.yml文件，找到keywords所在的行，添加自己希望通过搜索引擎索引的关键字。关键字个数五六个应该就差不多了，关键字个数对搜索引擎的具体影响，我也不懂。
 
 上述改动是针对首页的关键字优化，我们还必须优化每一个文章页面的keywords,打开/themes/next/layout/_partials/head.swig文件，找到以下代码：{% asset_img 2.jpeg keywords设置代码 %}<!-- more -->
